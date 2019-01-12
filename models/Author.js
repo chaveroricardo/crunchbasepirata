@@ -2,10 +2,11 @@ const mongoose = require("mongoose");
 const Schema   = mongoose.Schema;
 
 const bookSchema = new Schema({
-  title: String,
-  description: String,
-  author: [{type: Schema.ObjectId, ref: 'Author'}],
-  rating: Number
+  name: String,
+  lastname: String,
+  nationality: String,
+  birthday: Date,
+  pictureUrl: String
 }, {
   timestamps: {
     createdAt: "created_at",
@@ -13,6 +14,6 @@ const bookSchema = new Schema({
   }
 });
 
-const Book = mongoose.model("Book", bookSchema);
+const Author = mongoose.model("Book", bookSchema);
 
-module.exports = Book;
+module.exports = Author;
