@@ -11,6 +11,7 @@ router.get('/', (req, res, next) => {
 
 router.get('/libros', (req, res)=>{
   Books.find()
+    .populate('author')
     .then(libros =>{
       res.render('books', {libros})
     })
@@ -58,6 +59,7 @@ router.get('/libros/:id', (req, res)=>{
   let libroId = req.params.id
   console.log(libroId);
   Books.findOne({'_id': libroId})
+  .populate('author')
   .then((libro)=>{
     res.render('book-detalle', { libro })
   })
@@ -65,6 +67,7 @@ router.get('/libros/:id', (req, res)=>{
     console.log(err);
   })
 })
+
 
 router.post('/buscar', (req, res)=>{
   let nombreLibro = req.body.titulo;
@@ -90,5 +93,7 @@ router.post('/autores/nuevo', (req, res)=>{
   })
   .catch(err=>console.log(err))
 })
+
+
 
 module.exports = router;
