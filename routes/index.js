@@ -24,7 +24,7 @@ router.get('/libros/add', (req, res, next) => {
 
 router.post('/libros/add', (req, res, next) => {
   const { title, author, description, rating } = req.body;
-  const newBook = new Book({ title, author, description, rating });
+  const newBook = new Books({ title, author, description, rating });
   newBook.save()
     .then((book) => {
       res.redirect(301,'/libros');
