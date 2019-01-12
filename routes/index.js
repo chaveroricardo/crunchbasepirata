@@ -18,6 +18,22 @@ router.get('/libros', (req, res)=>{
     })
 })
 
+router.get('/libros/add', (req, res, next) => {
+  res.render("libro-nuevo");
+});
+
+router.post('/libros/add', (req, res, next) => {
+  const { title, author, description, rating } = req.body;
+  const newBook = new Book({ title, author, description, rating });
+  newBook.save()
+    .then((book) => {
+      res.redirect(301,'/libros');
+    })
+    .catch((error) => {
+
+    })
+});
+
 router.get('/libros/:id', (req, res)=>{
   let libroId = req.params.id
   console.log(libroId);
@@ -32,7 +48,7 @@ router.get('/libros/:id', (req, res)=>{
 
 router.post('/buscar', (req, res)=>{
   let nombreLibro = req.body.titulo;
-  Books.findOne({name: {$regex: nombreLibro, $options: 'i'}})
+  Books.findOne({title: {$regex: nombreLibro, $options: 'i'}})
   .then((libro)=>{
     res.redirect(301, `/libros/${libro._id}`)
   })
