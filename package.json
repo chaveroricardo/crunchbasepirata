@@ -20,5 +20,17 @@
   },
   "devDependencies": {
     "nodemon": "^1.12.1"
-  }
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chaveroricardo/crunchbasepirata.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chaveroricardo/crunchbasepirata/issues"
+  },
+  "homepage": "https://github.com/chaveroricardo/crunchbasepirata#readme",
+  "description": ""
 }
