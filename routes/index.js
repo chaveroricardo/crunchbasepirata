@@ -1,6 +1,6 @@
 const express = require('express');
 const router  = express.Router();
-// const Empresa = require('../models/empresas')
+//const Empresa = require('../models/empresas')
 const Books = require('../models/books')
 
 /* GET home page */
@@ -10,7 +10,7 @@ router.get('/', (req, res, next) => {
 
 router.get('/libros', (req, res)=>{
   Books.find()
-    .then(empresas =>{
+    .then(libros =>{
       res.render('books', {libros})
     })
     .catch(err =>{
@@ -19,9 +19,9 @@ router.get('/libros', (req, res)=>{
 })
 
 router.get('/libros/:id', (req, res)=>{
-  let empresaId = req.params.id
+  let libroId = req.params.id
   console.log(libroId);
-  Empresa.findOne({'_id': libroId})
+  Books.findOne({'_id': libroId})
   .then((libro)=>{
     res.render('book-detalle', { libro })
   })
@@ -31,10 +31,10 @@ router.get('/libros/:id', (req, res)=>{
 })
 
 router.post('/buscar', (req, res)=>{
-  let nombreEmpresa = req.body.empresa;
-  Empresa.findOne({name: {$regex: nombreEmpresa, $options: 'i'}})
-  .then((empresa)=>{
-    res.redirect(301, `/empresas/${empresa._id}`)
+  let nombreLibro = req.body.titulo;
+  Books.findOne({name: {$regex: nombreLibro, $options: 'i'}})
+  .then((libro)=>{
+    res.redirect(301, `/libros/${libro._id}`)
   })
   .catch(err=>{
     console.log(err);

@@ -1,7 +1,7 @@
-<h1>EMPRESAS</h1>
+<h1>Libros</h1>
 <form action="/buscar" method="post">
-  <label for="empresa">Buscar</label>
-  <input type="text" name="empresa" value="" placeholder="Buscar una empresa">
+  <label for="books">Buscar</label>
+  <input type="text" name="books" value="" placeholder="Buscar un libro">
   <button type="submit" name="button">Buscar</button>
 </form>
 <div>
@@ -10,9 +10,9 @@
       <th>Nombre</th>
       <th>URL</th>
     </tr>
-    {{#each empresas}}
+    {{#each books}}
     <tr>
-      <td><a href="/empresas/{{this._id}}">{{this.name}}</a></td>
+      <td><a href="/libros/{{this._id}}">{{this.name}}</a></td>
       <td> <a href="{{this.homepage_url}}">{{this.homepage_url}}</a></td>
     </tr>
     {{/each}}
